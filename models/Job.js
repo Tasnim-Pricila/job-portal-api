@@ -86,7 +86,7 @@ const jobSchema = mongoose.Schema({
         id: {
             type: ObjectId,
             ref: "HiringManager",
-            // required: true
+            required: true
         },
     },
     appliedBy: [{
