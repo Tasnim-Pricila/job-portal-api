@@ -4,6 +4,7 @@ const cors = require('cors');
 const dbconnect = require('./dbconnect');
 const jobRoute = require('./routes/job.route');
 const hiringManagerRoute = require('./routes/hiringManager.route');
+const candidateRoute = require('./routes/candidate.route');
 const port = process.env.PORT || 8080;
 
 const app = express();
@@ -19,6 +20,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/v1', jobRoute)
 app.use('/api/v1', hiringManagerRoute)
+app.use('/api/v1', candidateRoute)
 
 app.listen(port, () => {
     console.log(`App is running on port ${port}`.white.bold);
