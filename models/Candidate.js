@@ -34,12 +34,10 @@ const candidateSchema = mongoose.Schema({
         validate: [validator.isURL, "Please provide a valid Url"]
     },
     appliedJobs: [{
-        id: {
-            type: ObjectId,
-            ref: "Job"
-        }
+        type: ObjectId,
+        ref: "Job"
     }]
-},{
+}, {
     timeStamps: true
 })
 

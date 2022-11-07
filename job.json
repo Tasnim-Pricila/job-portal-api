@@ -10,10 +10,29 @@
         "vacancy": 2,
         "jobNature": "Remote",
         "jobType": "Full-time",
-        "startDate": "01 December",
-        "applicationDeadline": "25 November",
+        "startDate": "01 December 2022",
+        "applicationDeadline": "25 November 2022",
         "postedBy": {
-            "name": "Harun"
+            "name": "Harun",
+            "id": "6369512bfc56b702ab3b1723"
+        }
+    },
+    {
+        "companyName": "Redx",
+        "companyDescription": "Redx is committed to provide parcel delivery service throughout Bangladesh for e-commerce companies, home shopping channels, as well as individual Pidex is committed to provide parcel delivery service throughout Bangladesh for e-commerce companies, home shopping channels, as well as individual",
+        "jobTitle": "Frontend developer",
+        "requirements": "Pidex is committed to provide parcel delivery service throughout Bangladesh for e-commerce companies, home shopping channels, as well as individual Pidex is committed to provide parcel delivery service throughout Bangladesh for e-commerce companies, home shopping channels, as well as individual",
+        "location": "Niketon, Dhaka, Bangladesh",
+        "workingHours": "09:00 am  - 05:00 pm",
+        "salary": "30000",
+        "vacancy": 2,
+        "jobNature": "Remote",
+        "jobType": "Full-time",
+        "startDate": "01 December 2022",
+        "applicationDeadline": "27 November 2022",
+        "postedBy": {
+            "name": "Harun",
+            "id": "6369512bfc56b702ab3b1723"
         }
     }
 ]

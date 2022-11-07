@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { ObjectId } = mongoose.Schema.Types;
+const validator = require('validator');
 
 const hiringManagerSchema = mongoose.Schema({
     name: {
@@ -34,12 +35,10 @@ const hiringManagerSchema = mongoose.Schema({
         validate: [validator.isURL, "Please provide a valid Url"]
     },
     postedJobs: [{
-        id: {
-            type: ObjectId,
-            ref: "Job"
-        }
-    }]
-},{
+        type: ObjectId,
+        ref: "Job"
+    }],
+}, {
     timeStamps: true
 })
 
