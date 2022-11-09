@@ -40,9 +40,10 @@ const userSchema = mongoose.Schema({
     role: {
         type: String,
         enum: {
-            values: ["buyer", "store-manager", "admin"],
-            message: "Role can't be {VALUE}, must be buyer/store-manager/admin",
-        }
+            values: ["Candidate", "Hiring-manager", "Admin"],
+            message: "Role can't be {VALUE}, must be Candidate/Hiring-manager/Admin",
+        },
+        required: true
     },
     firstName: {
         type: String,
@@ -92,6 +93,10 @@ userSchema.pre('save', function (next) {
     next();
 })
 
+userSchema.methods.comparePassword = function(password, hash) {
+    const isPasswordvalid = bcrypt.compareSync(password, hash);
+    return isPasswordvalid;
+}
 
 const User = mongoose.model('User', userSchema);
 module.exports = User;

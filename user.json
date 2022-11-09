@@ -1,0 +1,14 @@
+[
+    {
+        "email": "silvysynthia27@gmail.com",
+        "password": "Synthia1@",
+        "confirmPassword": "Synthia1@",
+        "role": "Candidate",
+        "firstName": "Silvy",
+        "lastName": "Synthia",
+        "contactNumber": "01711828222",
+        "shippingAddress": "Uttara, Dhaka",
+        "imageUrl": "https://www.aci-bd.com/assets/images/theme/rice.jpg",
+        "status": "active"
+    }
+]
