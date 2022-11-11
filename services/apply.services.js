@@ -17,7 +17,10 @@ exports.createApplyService = async (value) => {
             console.log("time hein", date);
             const insertJob = await Job.updateOne(
                 { _id: jobId },
-                { $push: { "appliedBy": candidateId } }
+                {
+                    $push: { "appliedBy": candidateId},
+                    $inc: { numberOfApplication: 1 }
+                }
             );
             const insertCandidate = await Candidate.updateOne(
                 { _id: candidateId },
@@ -35,8 +38,11 @@ exports.createApplyService = async (value) => {
                 if (deadline.toISOString() > date) {
                     console.log("time hein", date);
                     const insertJob = await Job.updateOne(
-                        { _id: jobId },
-                        { $push: { "appliedBy": candidateId } }
+                        { _id: jobId }, 
+                        {
+                            $push: { "appliedBy": candidateId},
+                            $inc: { numberOfApplication: 1 }
+                        }
                     );
                     const insertCandidate = await Candidate.updateOne(
                         { _id: candidateId },
