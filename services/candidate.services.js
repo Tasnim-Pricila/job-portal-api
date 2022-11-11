@@ -17,3 +17,7 @@ exports.updateCandidateService = async (id, value) => {
         { runValidators: true });
     return candidate;
 }
+exports.deleteCandidateService = async (id) => {
+    const result = await Candidate.deleteOne({ _id: id })
+    return result;
+}

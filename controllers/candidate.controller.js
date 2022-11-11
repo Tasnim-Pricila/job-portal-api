@@ -1,4 +1,4 @@
-const { createCandidateService, getCandidateService, getCandidateServiceById, updateCandidateService } = require("../services/candidate.services");
+const { createCandidateService, getCandidateService, getCandidateServiceById, updateCandidateService, deleteCandidateService } = require("../services/candidate.services");
 
 exports.createCandidate = async (req, res, next) => {
     try {
@@ -71,6 +71,33 @@ exports.updateCandidateyId = async (req, res, next) => {
         res.status(400).send({
             status: 'fail',
             message: "Candidate update failed",
+            error: error.message
+        })
+    }
+}
+exports.deleteCandidateById = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const result  = await deleteCandidateService(id);
+        if( result.deletedCount > 0){
+            res.status(200).send({
+                status: 'success',
+                message: "Candidate deleted successfully",
+                data: result
+            })
+        }
+        else {
+            res.status(400).send({
+                status: 'fail',
+                message: "Already deleted",
+                data: result
+            })
+        }
+       
+    } catch (error) {
+        res.status(400).send({
+            status: 'fail',
+            message: "Deletion failed",
             error: error.message
         })
     }

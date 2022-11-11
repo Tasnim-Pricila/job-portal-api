@@ -6,7 +6,8 @@ candidateRoute.route('/candidate')
     .post(candidateController.createCandidate)
     .get(candidateController.getCandidate)
 
-    candidateRoute.route('/candidate/:id')
+candidateRoute.route('/candidate/:id')
     .patch(candidateController.updateCandidateyId)
+    .delete(candidateController.deleteCandidateById)
 
 module.exports = candidateRoute;
