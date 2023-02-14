@@ -2,12 +2,12 @@ const Apply = require("../models/Apply");
 const Candidate = require("../models/Candidate");
 const Job = require("../models/Job");
 
-exports.createApplyService = async (value) => {
+exports.createApplyService = async (id, value) => {
     const apply = await Apply.create(value);
-    const { jobId, candidateId } = apply;
+    const { candidateId } = apply;
 
     const getCandidateJobs = await Candidate.findOne({ _id: candidateId });
-    const getJobs = await Job.findOne({ _id: jobId });
+    const getJobs = await Job.findOne({ _id: id });
     const deadline = getJobs.applicationDeadline;
     console.log(deadline.toISOString());
     const date = new Date().toISOString();
@@ -16,7 +16,7 @@ exports.createApplyService = async (value) => {
         if (deadline.toISOString() > date) {
             console.log("time hein", date);
             const insertJob = await Job.updateOne(
-                { _id: jobId },
+                { _id: id },
                 {
                     $push: { "appliedBy": candidateId},
                     $inc: { numberOfApplication: 1 }
@@ -24,7 +24,7 @@ exports.createApplyService = async (value) => {
             );
             const insertCandidate = await Candidate.updateOne(
                 { _id: candidateId },
-                { $push: { "appliedJobs": jobId } }
+                { $push: { "appliedJobs": id } }
             )
             console.log("apply")
         }
@@ -34,11 +34,11 @@ exports.createApplyService = async (value) => {
     }
     else {
         getCandidateJobs.appliedJobs.forEach(async (element) => {
-            if (!element.equals(jobId.toString())) {
+            if (!element.equals(id.toString())) {
                 if (deadline.toISOString() > date) {
                     console.log("time hein", date);
                     const insertJob = await Job.updateOne(
-                        { _id: jobId }, 
+                        { _id: id }, 
                         {
                             $push: { "appliedBy": candidateId},
                             $inc: { numberOfApplication: 1 }
@@ -46,7 +46,7 @@ exports.createApplyService = async (value) => {
                     );
                     const insertCandidate = await Candidate.updateOne(
                         { _id: candidateId },
-                        { $push: { "appliedJobs": jobId } }
+                        { $push: { "appliedJobs": id } }
                     )
                     console.log("apply")
                 }
